@@ -1,13 +1,4 @@
 
-> [!NOTE]
-> A reanimate is a technique uses that manipulates a player's character for custom animations or full-body control. This is typically achieved by creating a client-sided rig and welding unanchored parts that exist on server to the rig’s limbs.
-
-# Official Support
-  - Frequently asked questions and documentation, [Click there](https://krypton-reanimate.gitbook.io)
-  - Discord server
-  
-  [![Discord Banner 2](https://discord.com/api/guilds/1131676375363879113/widget.png?style=banner2)](https://discord.gg/4YSWVMKRxb)
-
 # Code Module
 ```lua
 --[[
@@ -88,23 +79,8 @@ KryptonConfiguration = {
 		},
 	},
 }
-loadstring(game:HttpGet("https://raw.githubusercontent.com/KadeTheExploiter/Krypton/main/Module.luau"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/mewishmew9/Rublux/refs/heads/main/Module.luau"))()
 ```
-
-# Credits
-
-### Lead Developer
-
-#### [@xyzkade](https://github.com/KadeTheExploiter) 
-  > Leader of the project, wrote the entire code
-
-### Contributions:
-
-#### [@blukez](https://github.com/Blukezz/)
-  > Genesis-Alike Flinging mechanism.
-
-#### @deuces1961
-  > Convinced me to stop relying on Lua optimizations, such as defining variables as they don't make any difference on LuaU VMs, some in general optimization tricks as well.
 
 #### @myworldmain
   > Advice for shift lock fix, really appreciate it.
