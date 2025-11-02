@@ -12,7 +12,7 @@ local Sine = math.sin
 local Cosine = math.cos
 local ClockTPOT = os.clock
 
-local Hats = {} 
+local Hats = {};
 local ReanimateConfig = KryptonConfiguration or {}
 local DontStartYet = ReanimateConfig.DontStartYet -- Patchfix for private testing
 local FlingTable, ReturnOnDeath, RigName, WaitTime, RigScale, DestroyHeightOffset, RadiusOffset, FlingMethod, FlingVelocity, RefitCount
