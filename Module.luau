@@ -1421,8 +1421,7 @@ local replications = {
 }
 
 if not DontStartYet then
-	_G.REPLLLS = replications;
-	StartReanimate()
+	task.spawn(StartReanimate);
 end
 print("Finished");
 
