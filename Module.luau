@@ -1115,6 +1115,7 @@ local function StartReanimate()
 end
 
 if not DontStartYet then
+	print("started1")
 	StartReanimate()
 end 
 
