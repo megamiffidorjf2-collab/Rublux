@@ -340,30 +340,6 @@ local function FinalizeAccoutrements()
 		end
 	end
 end
-
--- // Camera
-
-local function UpdateCameraCFrame()
-	PreviousCameraCFrame = Camera['CFrame']
-
-	SignalWait(RunService['PreRender'])
-	Camera.CFrame = PreviousCameraCFrame
-end
-
-local function ChangeCameraSubject()
-	Camera.CameraSubject = FakeHumanoid
-	UpdateCameraCFrame()
-end
-
-local function ShiftlockRootOffset()
-	if UserInputService.MouseBehavior == CameraLockType then	
-		local Position = FakeRoot['Position']
-		local CamLookVector = Camera.CFrame['LookVector'] --* 1
-
-		FakeRoot.CFrame = CFrame.lookAt(Position, Position + Vector3New(CamLookVector.X, 0, CamLookVector.Z))
-	end
-end
-
 -- // Flinging
 
 local function FlingModels()
