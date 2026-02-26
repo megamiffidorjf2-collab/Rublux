@@ -341,6 +341,20 @@ local function FinalizeAccoutrements()
 	end
 end
 
+-- // Camera
+
+local function UpdateCameraCFrame()
+	PreviousCameraCFrame = Camera['CFrame']
+
+	SignalWait(RunService['PreRender'])
+	Camera.CFrame = PreviousCameraCFrame
+end
+
+local function ChangeCameraSubject()
+	-- Camera.CameraSubject = FakeHumanoid
+	UpdateCameraCFrame()
+end
+
 local function ShiftlockRootOffset()
 	if UserInputService.MouseBehavior == CameraLockType then	
 		local Position = FakeRoot['Position']
