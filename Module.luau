@@ -86,6 +86,7 @@ local Players: Players = FindFirstChildOfClass(game, "Players")
 local RunService: RunService = FindFirstChildOfClass(game, "RunService")
 local StarterGui: StarterGui = FindFirstChildOfClass(game, "StarterGui")
 local UserInputService: UserInputService = FindFirstChildOfClass(game, "UserInputService")
+local VRService: VRService = FindFirstChildOfClass(game, "VRService")
 
 local SignalConnect = Close['Connect']
 local SignalWait = Close['Wait']
@@ -344,6 +345,9 @@ end
 -- // Camera
 
 local function UpdateCameraCFrame()
+	if VRService and VRService.VRActive then
+		return
+	end
 	PreviousCameraCFrame = Camera['CFrame']
 
 	SignalWait(RunService['PreRender'])
@@ -351,7 +355,10 @@ local function UpdateCameraCFrame()
 end
 
 local function ChangeCameraSubject()
-	-- Camera.CameraSubject = FakeHumanoid
+	if VRService and VRService.VRActive then
+		return
+	end
+	Camera.CameraSubject = FakeHumanoid
 	UpdateCameraCFrame()
 end
 
@@ -708,7 +715,7 @@ local function OnPreRender()
 	ShiftlockRootOffset()
 	SetPhysicalProperties(HatsInUse, false)
 
-	if Camera then
+	if Camera and not (VRService and VRService.VRActive) then
 		if Camera.CameraSubject ~= FakeHumanoid then
 			ChangeCameraSubject()
 		end
