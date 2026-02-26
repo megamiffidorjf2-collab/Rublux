@@ -86,13 +86,11 @@ local Players: Players = FindFirstChildOfClass(game, "Players")
 local RunService: RunService = FindFirstChildOfClass(game, "RunService")
 local StarterGui: StarterGui = FindFirstChildOfClass(game, "StarterGui")
 local UserInputService: UserInputService = FindFirstChildOfClass(game, "UserInputService")
-local VRService: VRService = FindFirstChildOfClass(game, "VRService")
-local function IsVRActive(): boolean
-	local success, result = pcall(function()
-		return VRService and VRService.VRActive
-	end)
-	return success and result == true
-end
+local VRService = game:GetService("VRService")
+local VRActive = UserInputService.VREnabled or false
+UserInputService:GetPropertyChangedSignal("VREnabled"):Connect(function()
+	VRActive = UserInputService.VREnabled
+end)
 
 local SignalConnect = Close['Connect']
 local SignalWait = Close['Wait']
@@ -351,7 +349,7 @@ end
 -- // Camera
 
 local function UpdateCameraCFrame()
-	if IsVRActive() then
+	if VRActive then
 		return
 	end
 	PreviousCameraCFrame = Camera['CFrame']
@@ -361,7 +359,7 @@ local function UpdateCameraCFrame()
 end
 
 local function ChangeCameraSubject()
-	if IsVRActive() then
+	if VRActive then
 		return
 	end
 	Camera.CameraSubject = FakeHumanoid
@@ -721,7 +719,7 @@ local function OnPreRender()
 	ShiftlockRootOffset()
 	SetPhysicalProperties(HatsInUse, false)
 
-	if Camera and not IsVRActive() then
+	if Camera and not VRActive then
 		if Camera.CameraSubject ~= FakeHumanoid then
 			ChangeCameraSubject()
 		end
